@@ -26,7 +26,6 @@ def get_single_order(order_id):
     return jsonify({"error": "Order not found"}), 404
 
 #Endpoint 3
-#Create
 @app.route('/orders', methods=['POST'])
 def create_order():
     data = request.get_json()
@@ -41,6 +40,7 @@ def create_order():
     }
     orders_data.append(new_order)
     return jsonify({"message": f"Order {new_order['order_id']} created"}), 201
+
 #Endpoint 4
 @app.route('/orders/<int:order_id>', methods=['DELETE'])
 def delete_order(order_id):

@@ -11,6 +11,21 @@ orders_data = [
         ]
 
 #Endpoint 1
+#Create
+@app.route('/orders', methods=['POST'])
+def create_order():
+    data = request.get_json()
+
+    if not data or "item" not in data:
+        return jsonify({"error": "Missing item"}), 400
+
+    new_order = {
+        "order_id": len(orders_data) + 1,
+        "item": data["item"],
+        "paid": data.get("paid", False)
+    }
+    orders_data.append(new_order)
+    return jsonify({"message": f"Order {new_order['order_id']} created"}), 201
 #Endpoint 2
 #Endpoint 3
 #Endpoint 4

@@ -11,7 +11,20 @@ orders_data = [
         ]
 
 #Endpoint 1
+@app.route('/orders', methods=['GET'])
+def get_all_orders():
+    if not orders_data:
+        return jsonify({"message": "No orders found"}), 404
+    return jsonify(orders_data), 200
+
 #Endpoint 2
+@app.route('/orders/<int:order_id>', methods=['GET'])
+def get_single_order(order_id):
+    for order in orders_data:
+        if order["order_id"] == order_id:
+            return jsonify(order), 200
+    return jsonify({"error": "Order not found"}), 404
+
 #Endpoint 3
 #Endpoint 4
 

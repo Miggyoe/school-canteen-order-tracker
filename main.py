@@ -11,6 +11,8 @@ orders_data = [
         ]
 
 #Endpoint 1
+#Endpoint 2
+#Endpoint 3
 #Create
 @app.route('/orders', methods=['POST'])
 def create_order():
@@ -26,8 +28,6 @@ def create_order():
     }
     orders_data.append(new_order)
     return jsonify({"message": f"Order {new_order['order_id']} created"}), 201
-#Endpoint 2
-#Endpoint 3
 #Endpoint 4
 
 if __name__ == '__main__':

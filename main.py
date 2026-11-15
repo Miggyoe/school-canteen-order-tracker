@@ -42,6 +42,14 @@ def create_order():
     orders_data.append(new_order)
     return jsonify({"message": f"Order {new_order['order_id']} created"}), 201
 #Endpoint 4
+@app.route('/orders/<int:order_id>', methods=['DELETE'])
+def delete_order(order_id):
+    for order in orders_data:
+        if order["order_id"] == order_id:
+            orders_data.remove(order)
+            return jsonify({"message": f"Order {order_id} deleted"}), 200
+    return jsonify({"error": f"Order {order_id} not found"}), 404
+return jsonify({"message": f"Order {new_order['order_id']} created"}), 201
 
 if __name__ == '__main__':
     app.run(debug=True)
